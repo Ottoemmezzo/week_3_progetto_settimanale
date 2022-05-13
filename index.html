@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Una semplice clacolatrice in Javascript">
+    <title>Calcolatrice in JS</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/stile.css">
+</head>
+<body>
+   <div class="container">
+       <div id="calcolatrice">
+           <input type="text" id="display">
+           <button type="button" id="t_1" onclick="key_down(key=1)">1</button>
+           <button type="button" id="t_2" onclick="key_down(key=2)">2</button>
+           <button type="button" id="t_3" onclick="key_down(key=3)">3</button>
+           <button type="button" id="t_4" onclick="key_down(key=4)">4</button>
+           <button type="button" id="t_5" onclick="key_down(key=5)">5</button>
+           <button type="button" id="t_6" onclick="key_down(key=6)">6</button>
+           <button type="button" id="t_7" onclick="key_down(key=7)">7</button>
+           <button type="button" id="t_8" onclick="key_down(key=8)">8</button>
+           <button type="button" id="t_9" onclick="key_down(key=9)">9</button>
+           <button type="button" id="t_0" onclick="key_down(key=0)">0</button>
+           <button type="button" id="t_plus" onclick="key_down(key=-1)">+</button>
+           <button type="button" id="t_minus" onclick="key_down(key=-10)">-</button>
+           <button type="button" id="t_per" onclick="key_down(key=-100)">*</button>
+           <button type="button" id="t_div" onclick="key_down(key=-110)">/</button>
+           <button type="button" id="t_azzera" onclick="key_down(key=-120)">C</button>
+           <button type="button" id="t_virg" onclick="key_down(key=-130)">.</button>
+           <button type="button" id="t_result" onclick="key_down(key=-140)">=</button> 
+     </div>
+   </div>     
+   <script src="js/script.js"></script> 
+</body>
+</html>
