@@ -7,6 +7,7 @@
     width:20%;
     margin: 300px auto;
     border:5px solid orange;
+    background-color: black;
     border-radius: 10%;
     font-size: 1.5rem;
     display:grid;
@@ -21,20 +22,27 @@
 }
 #calcolatrice button{
     font-size:2rem;
+    color:lime;
+    background-color: black;
     border-radius: 10%;
-    width:3rem;
+    width:4rem;
     
 }
 #display{
     height: 3rem;
-    font-size:3rem;
+    font-size:2rem;
+    font-family: 'DS-Digital', sans-serif;
+    color: lime;
+    background-color: black;
     width:15rem;
     grid-area: display;
+    
 }
 
 #t_result{
+    width:6rem;
     grid-area:t_result;
-    width:200px;
+    
 }
 #t_1{
     grid-area: t_1;

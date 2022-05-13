@@ -8,11 +8,13 @@
     <title>Calcolatrice in JS</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/stile.css">
+    <link href="http://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet">
+
 </head>
 <body>
    <div class="container">
        <div id="calcolatrice">
-           <input type="text" id="display">
+           <input type="text" id="display" disabled="true" maxlenght="10" placeholder="max 10 cifre!">
            <button type="button" id="t_1" onclick="key_down(key=1)">1</button>
            <button type="button" id="t_2" onclick="key_down(key=2)">2</button>
            <button type="button" id="t_3" onclick="key_down(key=3)">3</button>
