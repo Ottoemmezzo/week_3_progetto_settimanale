@@ -1,4 +1,4 @@
-let virgola=1;
+let virgola=0;
 function key_down(key)
 {
     let index=0;
@@ -34,31 +34,31 @@ function key_down(key)
     }
     else if(key==-120){document.getElementById("display").value='';}
     else if(key==-130){
-        if(!trova_operatori(document.getElementById("display").value)&& virgola<2)
-           {   
-               virgola++;
-               document.getElementById("display").value+='.';
-            
-         }
-        else if(virgola==2){document.getElementById("display").value+='.';}
-         else{window.alert('Un numero puà avere solo un separatore (.) per i decimali.');}   
+         let index_virgola=[-1.-1];
+         index_virgola=trova_virgola(document.getElementById("display").value);
+         let op=trova_operatori(document.getElementById("display").value);
+         console.log(" operatore:"+op+" virgola1:"+index_virgola[0]+" virgola2:"+index_virgola[1]);
+
+        if ( (index_virgola[0]==-1 || (( index_virgola[0]!=-1  && index_virgola[1]==-1)&&(op!=undefined))))
+           {document.getElementById("display").value+='.';}
+        else{window.alert('Un numero puà avere solo un separatore (.) per i decimali.');}   
     }
     else if(key==-140){
         let expr =document.getElementById("display").value;
         let op_index=0, val_1='', val_2='';
+        
         op_index=trova_operatori(expr);
         val_1=parseFloat(expr.slice(0,op_index+1));
         console.log(val_1);
         val_2=parseFloat(expr.slice(op_index+1));
         console.log(val_2);
         document.getElementById("display").value=trova_operatori(expr,val_1,val_2);
-
+        
 
     }
      
 }
 function trova_operatori(expr,val_1,val_2 ){
-    let op=['*','/','+','-','.'];
     let index=-1;
     
     if(expr.indexOf('*',0)!=-1) 
@@ -66,14 +66,14 @@ function trova_operatori(expr,val_1,val_2 ){
         index=expr.indexOf('*',0);
         if(val_1 && val_2) 
         {
-            return val_1 * val_2;
+            return (val_1 * val_2).toFixed(3);
         }
         return index;
     }    
      else if(expr.indexOf('/',0)!=-1) {
         if((val_1 && val_2)&& val_2!=0) 
         {
-            return val_1 / val_2;
+            return (val_1 / val_2).toFixed(3);
         }
         else if (val_2==0) {window.alert("Division by zero!")}
         index=expr.indexOf('/',0);
@@ -82,7 +82,7 @@ function trova_operatori(expr,val_1,val_2 ){
     else if(index=expr.indexOf('+',0)!=-1){
         if(val_1 && val_2) 
         {
-            return val_1 + val_2;
+            return (val_1 + val_2).toFixed(3);
         }
         
         index=expr.indexOf('+',0); 
@@ -91,7 +91,7 @@ function trova_operatori(expr,val_1,val_2 ){
      else if(index=expr.indexOf('-',0)!=-1){ 
         if(val_1 && val_2) 
         {
-            return val_1 - val_2;
+            return (val_1 - val_2).toFixed(3);
         }
        
         index=expr.indexOf('-',0); 
@@ -100,4 +100,14 @@ function trova_operatori(expr,val_1,val_2 ){
      
 
     
+}
+function trova_virgola(expr)
+{
+    let index_virgola=[-1,-1];
+    index_virgola[0]=expr.indexOf('.',0);
+    if(index_virgola[0]!=1) 
+    {
+        index_virgola[1]=expr.indexOf('.',index_virgola[0]+1);
+    }
+    return index_virgola;    
 }

@@ -27,6 +27,7 @@
 }
 #display{
     height: 3rem;
+    font-size:3rem;
     width:15rem;
     grid-area: display;
 }
