@@ -1,7 +1,7 @@
 
 function key_down(key)
 {
-    let index=0;
+    let index=0, flag=false;
     if(key==1) {document.getElementById("display").value +=1;}
     else if(key==2){document.getElementById("display").value+=2;}
     else if(key==3){document.getElementById("display").value+=3;}
@@ -33,6 +33,21 @@ function key_down(key)
         else{window.alert('Questa calcolatrice non permette espressioni complesse.Inserisci il secondo valore e poi premi il tasto uguale');}   
     }
     else if(key==-120){document.getElementById("display").value='';}
+    else if(key==-160){
+        if(!trova_operatori(document.getElementById("display").value)) 
+        { 
+            document.getElementById("display").value=Math.sqrt(parseFloat(document.getElementById("display").value));
+        }
+        else{window.alert('Non puoi fare la radice di un operatore');}   
+    }
+    else if(key==-150){
+        if(!trova_operatori(document.getElementById("display").value)) 
+        { 
+            document.getElementById("display").value+='%';
+        }
+        else{window.alert('Questa calcolatrice non permette espressioni complesse.Inserisci il secondo valore e poi premi il tasto uguale');}   
+    }
+    
     else if(key==-130){
          let index_virgola=[-1.-1];
          index_virgola=trova_virgola(document.getElementById("display").value);
@@ -43,18 +58,23 @@ function key_down(key)
            {document.getElementById("display").value+='.';}
         else{window.alert('Un numero puà avere solo un separatore (.) per i decimali.');}   
     }
-    else if(key==-140){
-        let expr =document.getElementById("display").value;
-        let op_index=0, val_1='', val_2='';
+    else if(key==-140)
+    {
+        let expr=document.getElementById("display").value;
+        let op_index=-1, val_1='', val_2='';
         
-        op_index=trova_operatori(expr);
-        val_1=parseFloat(expr.slice(0,op_index+1));
-        console.log(val_1);
-        val_2=parseFloat(expr.slice(op_index+1));
-        console.log(val_2);
-        document.getElementById("display").value=trova_operatori(expr,val_1,val_2);
-        
-
+              
+            op_index=trova_operatori(expr);
+            if(op_index!=undefined)
+            {
+                    val_1=parseFloat(expr.slice(0,op_index+1));
+                    console.log(val_1);
+                    val_2=parseFloat(expr.slice(op_index+1));
+                    console.log(val_2);
+                    document.getElementById("display").value=trova_operatori(expr,val_1,val_2);
+                    
+            }
+            else{alert("Questa non è un'operazione valida!")}
     }
      
 }
@@ -97,7 +117,16 @@ function trova_operatori(expr,val_1,val_2 ){
         index=expr.indexOf('-',0); 
        return index;
      }
-     
+     else if(index=expr.indexOf('%',0)!=-1){
+        if(val_1 && val_2) 
+        {
+            console.log(val_1*val_2/100);
+            return (val_1 * val_2/100).toFixed(3);
+        }
+        index=expr.indexOf('%',0); 
+        return index;
+        
+     }
 
     
 }

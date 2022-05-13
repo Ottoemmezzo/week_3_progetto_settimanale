@@ -16,7 +16,7 @@
                          "t_4 t_5 t_6 t_per"
                          "t_1 t_2 t_3 t_minus"
                          "t_azzera t_0 t_virg t_plus"  
-                         "t_result t_result t_result t_result" 
+                         "t_sqrt t_result t_result t_perc" 
                             ;
     justify-items: center;
 }
@@ -39,8 +39,9 @@
     
 }
 
-#t_result{
-    width:6rem;
+#calcolatrice #t_result{
+    width:9rem;
+    background-color: crimson;
     grid-area:t_result;
     
 }
@@ -92,4 +93,9 @@
 #t_virg{
     grid-area: t_virg;
 }
-
+#t_sqrt{
+    grid-area: t_sqrt;
+}
+#t_perc{
+    grid-area: t_perc;
+}
