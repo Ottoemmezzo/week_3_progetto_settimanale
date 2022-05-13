@@ -1,4 +1,4 @@
-let virgola=0;
+
 function key_down(key)
 {
     let index=0;
